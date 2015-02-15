@@ -15,7 +15,11 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	<jdbc:embedded-database type="HSQL" id="dataSource"/>
+	<!-- jdbc:embedded-database type="HSQL" id="dataSource"/-->
+	
+	 <jdbc:embedded-database id="dataSource" type="HSQL">
+        <jdbc:script location="classpath:/schema.sql" encoding="UTF-8" />
+    </jdbc:embedded-database> 
 	
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf" >
 		<property name="packagesToScan" value="mx.mikew.jba.entity" />
